@@ -1,0 +1,21 @@
+{
+    "Version": "2012-10-17",
+    "Id": "sid-block-all-outside-vpn",
+    "Statement": [
+        {
+            "Sid": "IPAllow",
+            "Effect": "Deny",
+            "Principal": "*",
+            "Action": "s3:*",
+            "Resource": [
+                "arn:aws:s3:::nj-academy-demo-bucket-markm",
+                "arn:aws:s3:::nj-academy-demo-bucket-markm/*"
+            ],
+            "Condition": {
+                "NotIpAddress": {
+                    "aws:SourceIp": "52.51.7.138/32"
+                }
+            }
+        }
+    ]
+}
